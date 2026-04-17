@@ -83,9 +83,18 @@ if __name__ == '__main__':
         print("Использование: python preprocessor.py <файл>", file=sys.stderr)
         sys.exit(1)
 
+    output_file = sys.argv[2] if len(sys.argv) >= 3 else None
+
     with open(sys.argv[1], encoding='utf-8') as f:
         source = f.read()
 
     result = preprocess(source)
-    print(result)
+
+    if output_file:
+        with open(output_file, 'w', encoding='utf-8') as f_out:
+            f_out.write(result)
+        print(f"Результат сохранён в {output_file}", file=sys.stderr)
+    else:
+        print(result)
+        
     print("Ошибок не выявлено.", file=sys.stderr)
