@@ -1,16 +1,16 @@
 import sys
 
-KEYWORDS   = {"fun", "val", "var", "if", "else", "for", "while", "return", "in"}
+KEYWORDS = {"fun", "val", "var", "if", "else", "for", "while", "return", "in"}
 BOOL_CONSTS = {"true", "false"}
 OPERATORS_2 = {"&&", "||", "++", "--", "==", "!=", "<=", ">=", ".."}
 OPERATORS_1 = set("+-*/%=<>!")
-DELIMITERS  = set("(){}[];,:")
+DELIMITERS = set("(){}[];,:")
 
-def error(msg):
+def error(msg: str) -> None:
     print(f"Лексическая ошибка: {msg}", file=sys.stderr)
     sys.exit(1)
 
-def tokenize(source):
+def tokenize(source:str) -> list[tuple[str, str]]:
     tokens = []
     i = 0
     chars = list(source)
@@ -37,7 +37,6 @@ def tokenize(source):
             tokens.append(("CONSTANT_STRING", s))
             continue
 
-        # Числовая константа
         if ch.isdigit():
             num = ""
             dots = 0
@@ -85,8 +84,6 @@ def tokenize(source):
             tokens.append(("DELIMITER", ch))
             i += 1
             continue
-
-        # Всё остальное — ошибка
         error(f"Недопустимый символ: '{ch}'")
 
     return tokens

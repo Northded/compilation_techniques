@@ -8,6 +8,7 @@ fun main() {
     val x: Int = 10
     val y: Int = 3
     var result: Int
+    val names = arrayOf("Alice//", "Bob */")
  
     // Арифметические выражения
     result = x + y
@@ -18,7 +19,7 @@ fun main() {
  
     // Условный оператор if-else
     if (isPositive) {
-        println("Оба положительные")
+        println("Оба положительные /* //")
     } else {
         println("Не положительные")
     }
