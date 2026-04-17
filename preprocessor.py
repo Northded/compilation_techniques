@@ -35,7 +35,8 @@ def protect_strings(source: str) -> tuple[str, list[str]]:
             i += 1
             while i < len(chars) and chars[i] != '"':
                 if chars[i] == '\n':
-                    break
+                    print("Незакрытый строковый литерал")
+                    sys.exit(1)
                 s += chars[i]
                 i += 1
             if i < len(chars) and chars[i] == '"':
