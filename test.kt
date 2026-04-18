@@ -8,7 +8,7 @@ fun main() {
     val x: Int = 10
     val y: Int = 3
     var result: Int
-    val names = arrayOf("Alice//", "Bob */")
+    val names = arrayOf("Alice//", "Bob */)
  
     // Арифметические выражения
     result = x + y
